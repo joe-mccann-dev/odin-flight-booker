@@ -5,7 +5,7 @@ ruby '2.7.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
-# Use Postgres as the database for Active Record
+# Use Postgres as the database for Active Record.
 gem 'pg', '~> 1.2', '>= 1.2.3'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
@@ -43,6 +43,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'better_errors', '~> 2.9', '>= 2.9.1'
+  gem 'bullet', '~> 6.1', '>= 6.1.4'
 end
 
 group :test do
@@ -57,7 +58,7 @@ end
 group :test, :development do
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
   gem 'guard', '~> 2.17'
-  gem 'guard-rspec', '~> 4.7', '>= 4.7.3'
+  gem 'guard-rspec', '~> 4.7', '>= 4.7.3', require: false 
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.18'
   gem 'simplecov', require: false
