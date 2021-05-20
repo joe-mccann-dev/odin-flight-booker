@@ -1,24 +1,3 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project is an exercise in building advanced forms completed as part of [The Odin Project](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/building-advanced-forms). It is a flight-booker app in which hypothetical passengers can search for one way flights to or from airports selected from a dropdown. After viewing available flights, they can then select a flight to book and enter their information. This is done via nested forms, which requires whitelisting the nested attributes. 
