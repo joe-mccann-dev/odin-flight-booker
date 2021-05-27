@@ -1,0 +1,29 @@
+<section class="section">
+  
+  <%= form_with(url: flights_path, method: :get) do |form| %>
+    <span>FROM </span><%=   form.select(:origin_id, @airports) %>
+    <span>TO </span><%=     form.select(:destination_id, @airports) %>
+    <span>DEPARTS</span><%= form.select(:departure_time, @departure_times) %>
+
+
+    <%= form.submit "Find Flights", name: nil %>
+
+  <% end %>
+</section>
+
+ 
+<section class="section">
+  <div>
+    <ul>
+      <% @flights.each do |flight| %>
+        <li>
+        
+        <%= flight.origin_airport.code %> to <span><%= flight.destination_airport.code %></span><span> Departs: <%= flight.departure_time %></span>
+        
+        </li>
+
+      <% end %>
+    </ul>
+  </div>
+</section>
+
