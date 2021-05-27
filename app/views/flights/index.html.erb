@@ -1,8 +1,8 @@
 <section class="section">
   
   <%= form_with(url: flights_path, method: :get) do |form| %>
-    <span>FROM </span><%=   form.select(:origin_id, @airports, selected: params[:origin_id]) %>
-    <span>TO </span><%=     form.select(:destination_id, @airports, selected: params[:destination_id]) %>
+    <span>FROM </span><%=   form.select(:origin_id, Airport.options_for_select, selected: params[:origin_id]) %>
+    <span>TO </span><%=     form.select(:destination_id, Airport.options_for_select, selected: params[:destination_id]) %>
     <span>DEPARTS</span><%= form.select(:departure_time, @departure_times, selected: params[:departure_time]) %>
 
 
@@ -15,7 +15,7 @@
 <section class="section">
   <div>
     <ul>
-      <% @flights.each do |flight| %>
+      <% @available_flights.each do |flight| %>
         <li>
         
         <%= flight.origin_airport.code %> to <span><%= flight.destination_airport.code %></span><span> Departs: <%= flight.departure_time %></span>
