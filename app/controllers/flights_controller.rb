@@ -7,7 +7,6 @@ class FlightsController < ApplicationController
                        .map { |flight| [ flight.departure_time_formatted, flight.departure_time ] }
                        .uniq { |formatted_time, full_time| formatted_time }
     @flights_to_display_at_index = @all_flights.limit(20)
-                                               .order(:departure_time)
     @flights =  if params[:origin_id].nil?
                   @flights_to_display_at_index
                 else

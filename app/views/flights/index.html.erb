@@ -1,9 +1,9 @@
 <section class="section">
   
   <%= form_with(url: flights_path, method: :get) do |form| %>
-    <span>FROM </span><%=   form.select(:origin_id, @airports) %>
-    <span>TO </span><%=     form.select(:destination_id, @airports) %>
-    <span>DEPARTS</span><%= form.select(:departure_time, @departure_times) %>
+    <span>FROM </span><%=   form.select(:origin_id, @airports, selected: params[:origin_id]) %>
+    <span>TO </span><%=     form.select(:destination_id, @airports, selected: params[:destination_id]) %>
+    <span>DEPARTS</span><%= form.select(:departure_time, @departure_times, selected: params[:departure_time]) %>
 
 
     <%= form.submit "Find Flights", name: nil %>
