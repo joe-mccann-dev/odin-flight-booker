@@ -2,6 +2,7 @@ class FlightsController < ApplicationController
 
   def index
     @available_flights = find_available_flights
+    @booking = Booking.new
   end
 
   def flights
