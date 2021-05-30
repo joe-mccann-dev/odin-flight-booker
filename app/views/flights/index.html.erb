@@ -19,9 +19,9 @@
           <% @available_flights.each do |flight| %>
             <li>
               <%= flight.origin_airport.code %> to <span><%= flight.destination_airport.code %></span><span> Departs: <%= flight.departure_time %></span>
-              <%= form.radio_button(:flight_id, flight.id)%>
-              <%= form.hidden_field(:tickets) %>
-              <%= form.submit("Book Flight") %>
+              <%= f.radio_button(:flight_id, flight.id)%>
+              <%= f.hidden_field(:tickets) %>
+              <%= f.submit("Book Flight") %>
             </li>
           <% end %>
         </ul>
