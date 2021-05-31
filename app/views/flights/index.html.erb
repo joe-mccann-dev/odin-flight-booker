@@ -5,28 +5,28 @@
     <span>FROM </span><%=   form.select(:origin_id, Airport.options_for_select, selected: params[:origin_id]) %>
     <span>TO </span><%=     form.select(:destination_id, Airport.options_for_select, selected: params[:destination_id]) %>
     <span>DEPARTS</span><%= form.select(:departure_time, Flight.options_for_select, selected: params[:departure_time]) %>
-    <span>Passengers</span><%= form.select(:tickets, (1..4), selected: params[:number_of_passengers]) %>
-
-
+    <span>Passengers</span><%= form.select(:tickets, (1..4), selected: params[:tickets]) %>
+    
     <%= form.submit "Find Flights", name: nil %>
 
   <% end %>
-    <!-- search results -->
-    <!--  form surrounding search results -->
-    <%= form_with(url: new_booking_path, method: :get) do |f| %>
-      <div>
-        <ul>
-          <% @available_flights.each do |flight| %>
-            <li>
-              <%= flight.origin_airport.code %> to <span><%= flight.destination_airport.code %></span><span> Departs: <%= flight.departure_time %></span>
-              <%= f.radio_button(:flight_id, flight.id)%>
-              <%= f.hidden_field(:tickets) %>
-              <%= f.submit("Book Flight") %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+
+  <!-- flight search results -->
+  <!--  form surrounding search results -->
+  <%= form_with(model: Booking.new, url: new_booking_path, method: :get) do |f| %>
+    <div>
+      <ul>
+        <% @available_flights.each do |flight| %>
+          <li>
+            <%= flight.origin_airport.code %> to <span><%= flight.destination_airport.code %></span><span> Departs: <%= flight.departure_time %></span>
+            <%= f.radio_button(:flight_id, flight.id)%>
+            <%= f.submit("Book Flight") %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <%= f.hidden_field(:tickets, value: params[:tickets]) %>
+  <% end %>
 </section>
 
 
