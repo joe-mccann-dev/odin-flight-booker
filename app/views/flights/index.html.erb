@@ -13,14 +13,14 @@
 
   <!-- flight search results -->
   <!--  form surrounding search results -->
-  <%= form_with(model: Booking.new, url: new_booking_path, method: :get) do |f| %>
+  <%= form_with(url: new_booking_path, method: :get) do |f| %>
     <div>
       <ul>
         <% @available_flights.each do |flight| %>
           <li>
             <%= flight.origin_airport.code %> to <span><%= flight.destination_airport.code %></span><span> Departs: <%= flight.departure_time %></span>
             <%= f.radio_button(:flight_id, flight.id)%>
-            <%= f.submit("Book Flight") %>
+            <%= f.submit("Book Flight", name: nil) %>
           </li>
         <% end %>
       </ul>
