@@ -9,8 +9,9 @@
     <%= passenger_form.email_field :email %>
   <% end %>
 
-  <%= f.hidden_field :tickets,   value: params[:tickets] %>
-  <%= f.hidden_field :flight_id, value: params[:flight_id] %>
+  <%= f.hidden_field :confirmation_number, value: @confirmation_number %>
+  <%= f.hidden_field :tickets,             value: params[:tickets] %>
+  <%= f.hidden_field :flight_id,           value: params[:flight_id] %>
   <%= f.submit "Book Flight" %>
 
 <% end %>
