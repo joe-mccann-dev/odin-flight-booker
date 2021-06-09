@@ -6,6 +6,7 @@ class FlightsController < ApplicationController
 
   def flights
     Flight.all.order(:departure_time)
+              .includes([:origin_airport, :destination_airport])
   end
 
   def find_available_flights
