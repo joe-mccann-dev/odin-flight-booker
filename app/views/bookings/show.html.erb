@@ -1,46 +1,22 @@
 <h4>Your flight is booked!</h4>
 <h5>Your Booking confirmation number is <%= @booking.confirmation_number.upcase %></h5>
-<h6>Booking Info</h6>
-
-<p>
-  <span>Flight Number</span>
-  <%= @booking.flight_id %>
-</p>
-
-<p>
-  <span>Departing</span>
-  <%= @booking.flight.origin_airport.code %>
-</p>
-
-<p>
-  <span>Departure Time</span>
-  <%= @booking.flight.departure_time %>
-</p>
-
-<p>
-  <span>Arriving</span>
-  <%= @booking.flight.destination_airport.code %>
-</p>
-
-<p>
-  <span>Duration</span>
-  <%= @booking.flight.duration %>
-</p>
 
 <p>
   <span>Number of Passengers</span>
-<%= @booking.tickets %>
+  <%= @booking.tickets %>
 </p>
 
 <h6>Passenger Info</h6>
 
 <div>
   <ul>
-  <% @booking.passengers.each do |passenger| %>
-    <li>
-      <%= passenger.name %> |
-      <%= passenger.email %>
-    </li>
-  <% end %>
+    <% @booking.passengers.each do |passenger| %>
+      <li>
+        <%= passenger.name %>
+        <%= passenger.email %>
+      </li>
+    <% end %>
   </ul>
 </div>
+
+<%= render 'booking_info' %>

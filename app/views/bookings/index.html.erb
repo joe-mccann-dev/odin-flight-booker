@@ -1,0 +1,33 @@
+<!-- condition necessary if no booking found or if user enters params manually
+with search param empty, e.g. /bookings?search= -->
+<% if @booking %>
+  <p>
+    Here are the details for
+    confirmation number <%= @booking.confirmation_number.upcase %>
+  </p>
+
+  <%= render 'booking_info' %>
+
+  <p>
+    <span>Number of Passengers</span>
+    <%= @booking.tickets %>
+  </p>
+
+  <h6>Passenger Info</h6>
+
+  <div>
+    <ul>
+      <% @booking.passengers.each do |passenger| %>
+        <li>
+          <%= passenger.name %>
+          <%= passenger.email %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+<% else %>
+  <p>No Booking Found</p>
+<% end %>
+
+<%= link_to "Home", root_url %>

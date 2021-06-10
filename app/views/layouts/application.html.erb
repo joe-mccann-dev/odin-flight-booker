@@ -11,6 +11,7 @@
   </head>
 
   <body>
+  <%= link_to "Home", root_url %>
     <% flash.each do |message_type, message| %>
        <%= content_tag(:p, message, class: "notification is-#{message_type}") %>
     <% end %>

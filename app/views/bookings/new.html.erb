@@ -1,15 +1,23 @@
+<%= render 'booking_info' %>
+
+<p>
+  Please fill out info for <%= pluralize_passengers %>.
+</p>
+
 <%= form_with(model: @booking) do |f| %>
+  <ul>
+    <%= f.fields_for :passengers do |passenger_form| %>
+      <li>
+        <%= passenger_form.label :name %>
+        <%= passenger_form.text_field :name %>
 
-  <%= f.fields_for :passengers do |passenger_form| %>
+        <%= passenger_form.label :email %>
+        <%= passenger_form.email_field :email %>
+      </li>
+      <brp>
+    <% end %>
+  </ul>
 
-    <%= passenger_form.label :name %>
-    <%= passenger_form.text_field :name %>
-
-    <%= passenger_form.label :email %>
-    <%= passenger_form.email_field :email %>
-  <% end %>
-
-  <%= f.hidden_field :confirmation_number, value: @confirmation_number %>
   <%= f.hidden_field :tickets,             value: params[:tickets] %>
   <%= f.hidden_field :flight_id,           value: params[:flight_id] %>
   <%= f.submit "Book Flight" %>

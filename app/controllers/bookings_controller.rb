@@ -1,16 +1,19 @@
 class BookingsController < ApplicationController
 
   def new
+    flash[:info] = "Your booking is almost complete. Please fill out passenger info below."
     @booking = Booking.new
-    @confirmation_number = SecureRandom.base36(8)
+    @flight = Flight.find(params[:flight_id])
     number_of_passengers = params[:tickets].to_i
     number_of_passengers.times { @booking.passengers.build }
   end
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.confirmation_number = SecureRandom.base36(8)
     if @booking.save
-      flash[:success] = "Booking was successfully created."
+      flash[:success] = "Success! Your Booking is complete. 
+      #{@booking.flight.airline} airlines will contact you with boarding details."
       redirect_to @booking
     else
       render :new
@@ -19,6 +22,14 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @flight = @booking.flight
+  end
+
+  def index
+    @booking = Booking.search(params[:search])
+    if @booking
+      @flight = @booking.flight
+    end
   end
 
   private
@@ -27,6 +38,7 @@ class BookingsController < ApplicationController
       params.require(:booking).permit(
         :flight_id,
         :tickets,
+        :search,
         :confirmation_number,
         passengers_attributes: [:name, :email]
       )

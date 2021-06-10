@@ -1,0 +1,33 @@
+
+<h4>Booking Info</h4>
+
+<p>
+  <span>Airline</span>
+  <%= @flight.airline %>
+</p>
+
+<p>
+  <span>Flight Number</span>
+  <%= @flight.flight_number %>
+</p>
+
+<p>
+  <span>Departing</span>
+  <%= @flight.origin_airport.code %>
+</p>
+
+<p>
+  <span>Departure Time</span>
+  <%= short_time_format(@flight) %>
+</p>
+
+<p>
+  <span>Duration</span>
+  <%= duration_formatted(@flight) %>
+</p>
+
+<p>
+  <span>Arriving</span>
+  <%= @flight.destination_airport.code %>
+</p>
+
