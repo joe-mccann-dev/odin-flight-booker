@@ -10,8 +10,17 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-  <%= link_to "Home", root_url %>
+  <body class="has-background-grey-lighter">
+    <nav class="navbar navigation">
+      <div class="navbar-brand">
+        <%= image_tag("greg-rosenke-Y8QpNeHFGno-unsplash-cropped-scaled-300w.png", size: "200x100", alt: "raven in flight") %>
+      </div>
+
+      <div class="navbar-end">
+        <%= link_to "RavenReservations", root_url, class: "has-text-grey-lighter navbar-item is-size-5" %>
+      </div>
+
+    </nav>
     <% flash.each do |message_type, message| %>
        <%= content_tag(:p, message, class: "notification is-#{message_type}") %>
     <% end %>
