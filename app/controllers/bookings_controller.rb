@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
     @booking.confirmation_number = SecureRandom.base36(8)
     if @booking.save
       flash[:success] = "Success! Your Booking is complete. 
-      #{@booking.flight.airline} airlines will contact you with boarding details."
+      #{@booking.flight.airline} will contact you with boarding details."
       redirect_to @booking
     else
       render :new
@@ -26,10 +26,7 @@ class BookingsController < ApplicationController
   end
 
   def index
-    @booking = Booking.search(params[:search])
-    if @booking
-      @flight = @booking.flight
-    end
+    @bookings = Booking.search(params[:search])
   end
 
   private

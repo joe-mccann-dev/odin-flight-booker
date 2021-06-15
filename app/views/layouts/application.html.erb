@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OdinFlightBooker</title>
+    <title>RavenReservations</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,17 +10,35 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="has-background-grey-lighter">
-    <nav class="navbar navigation">
+  <body class="has-background-dark has-text-light">
+    <nav class="navbar is-white">
       <div class="navbar-brand">
-        <%= image_tag("greg-rosenke-Y8QpNeHFGno-unsplash-cropped-scaled-300w.png", size: "200x100", alt: "raven in flight") %>
+        <a href="/flights">
+          <%= image_tag("odinsravens.png", size: "100x100", alt: "odin's ravens") %>
+        </a>
+        <div class="navbar-item"></div>
+        <p class="navbar-item has-text-light is-size-2"> RavenReservations</p>
+
+        <a class="navbar-burger" id="burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
       </div>
 
-      <div class="navbar-end">
-        <%= link_to "RavenReservations", root_url, class: "has-text-grey-lighter navbar-item is-size-5" %>
+      <div class="navbar-menu" id="nav-links">
+
+        <div class="navbar-end">
+          <%= link_to "Flights", root_url, class: "has-text-dark navbar-item is-size-3-desktop is-size-4-tablet is-size-6-mobile" %>
+          <%= link_to "Bookings", bookings_path, class: "has-text-dark navbar-item is-size-3-desktop is-size-4-tablet is-size-6-mobile" %>
+          <div class="navbar-item"></div>
+          <div class="navbar-item"></div>
+        </div>
+
       </div>
 
     </nav>
+    
     <% flash.each do |message_type, message| %>
        <%= content_tag(:p, message, class: "notification is-#{message_type}") %>
     <% end %>

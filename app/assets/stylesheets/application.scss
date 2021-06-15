@@ -1,9 +1,11 @@
 @import "bulma";
+@import url('https://fonts.googleapis.com/css2?family=Charm&family=Mukta&display=swap');
 
-.navigation {
-  background-color: #3d4b54;
+body {
+  font-family: 'Mukta', sans-serif;
 }
 
-.navbar a:hover {
-  background-color: #3d4b54;
+nav {
+  background: linear-gradient(45deg, #000, #fff);
+  font-family: 'Charm', cursive;
 }
