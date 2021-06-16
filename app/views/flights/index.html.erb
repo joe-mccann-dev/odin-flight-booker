@@ -2,63 +2,99 @@
 <section class="section">
 
   <div class="columns is-mobile">
-    <div class="column">
-      <div class="level is-mobile">
-        <h1 class=" level-item title has-text-light">Flight Finder</h1>
+    <div class="column is-half is-offset-one-quarter">
+      <h1 class="has-text-centered has-text-light title">Flight Finder</h1>
+      <div class="has-text-centered available-flights">
+        <% if @available_flights.empty? %>
+          
+          <%= form_with(url: flights_path, method: :get) do |form| %>
+            <span>FROM </span><%=   form.select(:origin_id, Airport.options_for_select, selected: params[:origin_id]) %>
+            <span>TO </span><%=     form.select(:destination_id, Airport.options_for_select, selected: params[:destination_id]) %>
+            <span>DEPARTS</span><%= form.select(:departure_time, Flight.options_for_select, selected: params[:departure_time]) %>
+            <span>Passengers</span><%= form.select(:tickets, (1..4), selected: params[:tickets]) %>
+            
+            <%= form.submit "Find Flights", name: nil %>
+
+          <% end %>
+
+        <% end %>
+      </div>
+
+      <!-- flight search results -->
+      
+      <div class="search-results">
+        <% if @available_flights.any? %>
+          <p class="has-text-centered">
+            <div class="huginn-muninn">
+              <p class="has-text-centered">
+                Huginn and Muninn searched all of Midgard and returned with . . .
+              </p>
+            </div>
+          </p>
+          <p class="has-text-centered has-text-weight-bold is-size-6 mb-5">
+            Flights for <%= long_date_format %>
+          </p>
+
+          <div class="columns">
+            <div class="column is-offset-one-quarter">
+              <div class="columns">
+                <div class="column is-half">
+                  <p class="has-text-weight-bold">
+                    ORIGIN
+                  </p>
+                  <p>
+                    <%= show_selected_airport(params[:origin_id]) %> 
+                  </p>
+                </div>
+                <div class="column is-half">
+                  <p class="has-text-weight-bold">
+                    DESTINATION
+                  </p>
+                  <p>
+                    <%= show_selected_airport(params[:destination_id]) %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-offset-one-fifth">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <td>Airline</td>
+                    <td>Flight Number</td>
+                    <td>Departure Time</td>
+                    <td>Duration</td>
+                    <td></td>
+                  </tr>
+                </thead>
+                <% @available_flights.each do |flight| %>
+                  <tr>
+                    <td><%= flight.airline %></td>
+                    <td><%= flight.flight_number %></td>
+                    <td><%= short_time_format(flight) %></td>
+                    <td><%= duration_formatted(flight) %></td>
+                    <td>
+                      <%= button_to "Book Flight",
+                                        new_booking_path,
+                                        method: :get,
+                                        params: { flight_id: flight.id,
+                                                  tickets:   params[:tickets]} %>
+                    </td>
+                  </tr>
+                <% end %>
+              </table>
+            </div>
+          </div>
+          
+          <% elsif params[:origin_id].present? %>
+            <p>No flights found.</p>
+          <% end %>
       </div>
     </div>
   </div>
 
-  
-
-  <% if @available_flights.empty? %>
-
-    <h3>Search for a flight below</h3>
-    
-    <%= form_with(url: flights_path, method: :get) do |form| %>
-      <span>FROM </span><%=   form.select(:origin_id, Airport.options_for_select, selected: params[:origin_id]) %>
-      <span>TO </span><%=     form.select(:destination_id, Airport.options_for_select, selected: params[:destination_id]) %>
-      <span>DEPARTS</span><%= form.select(:departure_time, Flight.options_for_select, selected: params[:departure_time]) %>
-      <span>Passengers</span><%= form.select(:tickets, (1..4), selected: params[:tickets]) %>
-      
-      <%= form.submit "Find Flights", name: nil %>
-
-  <% end %>
-
-<% end %>
-  <!-- flight search results -->
-    <div>
-      <% if @available_flights.any? %>
-        <p>
-          Huginn and Muninn searched all of Midgard and found the following flights
-        </p>
-        <p>
-          Flights for <%= long_date_format %>:
-        </p>
-        <p>
-          From: <%= show_selected_airport(params[:origin_id]) %> 
-        </p>
-        <p>
-          To: <%= show_selected_airport(params[:destination_id]) %>
-        </p>
-        <ul>
-          <% @available_flights.each do |flight| %>
-            <li>
-              <%= flight.airline %><span> Flight #<%= flight.flight_number %></span>
-              Departs: <%= short_time_format(flight) %>
-              Duration: <%= duration_formatted(flight) %>
-              <%= button_to "Book Flight",
-                                  new_booking_path,
-                                  method: :get,
-                                  params: { flight_id: flight.id,
-                                            tickets:   params[:tickets]} %>
-            </li>
-          <% end %>
-        </ul>
-        <% else %>
-          <p>No flights found.</p>
-        <% end %>
-    </div>
 </section>
 
 

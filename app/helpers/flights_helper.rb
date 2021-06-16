@@ -15,6 +15,6 @@ module FlightsHelper
   end
 
   def show_selected_airport(location_id)
-    Airport.find(location_id).code
+    Airport.find(location_id).location
   end
 end
