@@ -18,5 +18,11 @@
       <li><%= booking.flight.destination_airport.code%></li>
       <li><%= booking.flight.duration %>
     </ul>
+
+    <ul>
+      <% booking.passengers.each do |passenger| %>
+        <li><%= passenger.name %></li>
+      <% end %>
+    </ul>
   <% end %>
 <% end %>
