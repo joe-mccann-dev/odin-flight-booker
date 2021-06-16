@@ -3,6 +3,8 @@ class Booking < ApplicationRecord
   
   has_many :passengers
   accepts_nested_attributes_for :passengers
+
+  validates_uniqueness_of :confirmation_number
   
   def self.search(search)
     if search

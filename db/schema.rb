@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_16_045020) do
+ActiveRecord::Schema.define(version: 2021_06_16_051842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_06_16_045020) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "tickets"
     t.string "confirmation_number"
+    t.index ["confirmation_number"], name: "index_bookings_on_confirmation_number", unique: true
   end
 
   create_table "flights", force: :cascade do |t|
