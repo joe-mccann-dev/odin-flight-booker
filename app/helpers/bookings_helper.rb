@@ -6,4 +6,5 @@ module BookingsHelper
   def bookings_searched_and_found?
     params[:search] && @bookings.any?
   end
+
 end

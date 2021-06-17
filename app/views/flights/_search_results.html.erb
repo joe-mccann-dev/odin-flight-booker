@@ -1,0 +1,37 @@
+<div class="huginn-muninn">
+  <p class="has-text-centered">
+    <a class="has-text-light is-link" href="https://en.wikipedia.org/wiki/Huginn_and_Muninn" target="_blank">Huginn and Muninn</a> searched all of Midgard and returned with . . .
+  </p>
+</div>
+<p class="has-text-centered has-text-weight-bold is-size-3-desktop is-size-5-mobile">
+  <%= @available_flights.count. %>Flights for <%= long_date_format %>
+</p>
+<div class="icon-top has-text-centered">
+  <span class="icon-big">
+    <ion-icon name="airplane"></ion-icon>
+  </span>
+</div>
+<div class="columns">
+  <div class="has-text-centered column is-half">
+    <p class="has-text-weight-bold">
+      ORIGIN
+    </p>
+    <p>
+      <%= show_selected_airport(params[:origin_id]) %> 
+    </p>
+  </div>
+  <div class="has-text-centered column is-half">
+    <p class="has-text-weight-bold">
+      DESTINATION
+    </p>
+    <p>
+      <%= show_selected_airport(params[:destination_id]) %>
+    </p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="columns is-centered">
+    <%= render 'results_table' %>
+  </div>
+</section>

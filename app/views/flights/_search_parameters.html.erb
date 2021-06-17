@@ -1,0 +1,13 @@
+<section class="section">
+  <div class="has-text-centered search-parameters">
+    <%= form_with(url: flights_path, method: :get) do |form| %>
+      <%= form.select(:origin_id, Airport.options_for_select, selected: params[:origin_id]) %>
+      <%= form.select(:destination_id, Airport.options_for_select, selected: params[:destination_id]) %>
+      <%= form.select(:departure_time, Flight.options_for_select, selected: params[:departure_time]) %>
+      <%= form.select(:tickets, (1..4), selected: params[:tickets]) %>
+                
+      <%= form.submit "Find Flights", name: nil %>
+
+      <% end %>
+  </div>
+</section>
