@@ -28,10 +28,34 @@ nav {
   font-size: 125%;
 }
 
+select {
+  background-color: white;
+  border-color: #dbdbdb;
+  border-radius: 4px;
+  color: #363636;
+  cursor: pointer;
+  justify-content: center;
+  padding-bottom: calc(0.5em - 1px);
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: calc(0.5em - 1px);
+  margin: 8px;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 24px;
+  font-size: 14px;
+  width: 8rem;
+}
+
 @media 
 only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px) {
+(min-device-width: 768px) and (max-device-width: 1023px) {
   table, thead, tbody, th, td, tr { 
 		display: block; 
 	}
+
+  select { 
+    font-size: 85%;
+    width: 85%;
+  }
 }

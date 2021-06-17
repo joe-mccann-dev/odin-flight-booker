@@ -1,11 +1,16 @@
 class BookingsController < ApplicationController
 
   def new
-    flash[:info] = "Your booking is almost complete. Please fill out passenger info below."
-    @booking = Booking.new
-    @flight = Flight.find(params[:flight_id])
-    number_of_passengers = params[:tickets].to_i
-    number_of_passengers.times { @booking.passengers.build }
+    if params[:tickets].present?
+      flash[:info] = "Your booking is almost complete. Please fill out passenger info below."
+      @booking = Booking.new
+      @flight = Flight.find(params[:flight_id])
+      number_of_passengers = params[:tickets].to_i
+      number_of_passengers.times { @booking.passengers.build }
+    else
+      flash[:warning] = "Please select number of passengers before booking a flight."
+      redirect_to root_path
+    end
   end
 
   def create

@@ -2,9 +2,15 @@
   <div class="columns">
     <div class="column is-half is-offset-one-quarter">
       <h1 class="has-text-centered has-text-light title is-size-5-mobile">Flight Finder</h1>
-      <% if @available_flights.empty? %>
+      <% if params_present_and_no_flights_found?%>
+        <%= render 'search_parameters' %>
+        <p class="notification is-warning has-text-centered">
+          No Flights Found. Please search again.
+        </p>
+      <% elsif @available_flights.empty? %>
         <%= render 'search_parameters' %>
       <% else %>
+        <%= render 'search_parameters' %>
         <%= render 'search_results' %>
       <% end %>
     </div>

@@ -1,13 +1,20 @@
-<section class="section">
-  <div class="has-text-centered search-parameters">
-    <%= form_with(url: flights_path, method: :get) do |form| %>
-      <%= form.select(:origin_id, Airport.options_for_select, selected: params[:origin_id]) %>
-      <%= form.select(:destination_id, Airport.options_for_select, selected: params[:destination_id]) %>
-      <%= form.select(:departure_time, Flight.options_for_select, selected: params[:departure_time]) %>
-      <%= form.select(:tickets, (1..4), selected: params[:tickets]) %>
-                
-      <%= form.submit "Find Flights", name: nil %>
+<div class="has-text-centered search-parameters mb-4 columns is-centered">
 
-      <% end %>
-  </div>
-</section>
+
+  <%= form_with(url: flights_path, method: :get) do |form| %>
+
+    <div class="column is-three-fourths">
+      <%= form.select(:origin_id, Airport.options_for_select, selected: params[:origin_id], prompt: "Departs") %>
+      <%= form.select(:destination_id, Airport.options_for_select, selected: params[:destination_id], prompt: "Arrives") %>
+      <%= form.select(:departure_time, Flight.options_for_select, selected: params[:departure_time], prompt: "Date") %>
+      <%= form.select(:tickets, (1..4), selected: params[:tickets], prompt: "Passengers") %>  
+    </div>
+
+    <div class="column is-one-fourth">
+      <%= form.submit "Find Flights", class: "button is-info is-outlined", name: nil %>  
+    </div>
+    
+
+    <% end %>
+
+</div>

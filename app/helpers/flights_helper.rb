@@ -17,4 +17,10 @@ module FlightsHelper
   def show_selected_airport(location_id)
     Airport.find(location_id).location
   end
+  
+  def params_present_and_no_flights_found?
+    required = [:origin_id, :destination_id, :departure_time, :tickets]
+    required.any? { |key| params.has_key?(key) } &&
+      @available_flights.empty?
+  end
 end

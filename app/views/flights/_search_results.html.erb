@@ -4,7 +4,7 @@
   </p>
 </div>
 <p class="has-text-centered has-text-weight-bold is-size-3-desktop is-size-5-mobile">
-  <%= @available_flights.count. %>Flights for <%= long_date_format %>
+  <%= pluralize(@available_flights.count, 'Flight') %> for <%= long_date_format %>
 </p>
 <div class="icon-top has-text-centered">
   <span class="icon-big">

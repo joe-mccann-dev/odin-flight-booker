@@ -18,6 +18,8 @@ class FlightsController < ApplicationController
   end
 
   def within_selected_date(date)
+    return unless date.present?
+
     DateTime.new(date.year, date.month, date.day).all_day
   end
 end
