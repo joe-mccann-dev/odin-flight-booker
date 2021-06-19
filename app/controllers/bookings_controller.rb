@@ -2,11 +2,10 @@ class BookingsController < ApplicationController
 
   def new
     if params[:tickets].present?
-      flash[:info] = "Your booking is almost complete. Please fill out passenger info below."
       @booking = Booking.new
       @flight = Flight.find(params[:flight_id])
-      number_of_passengers = params[:tickets].to_i
-      number_of_passengers.times { @booking.passengers.build }
+      @number_of_passengers = params[:tickets].to_i
+      @number_of_passengers.times { @booking.passengers.build }
     else
       flash[:warning] = "Please select number of passengers before booking a flight."
       redirect_to root_path
@@ -18,10 +17,13 @@ class BookingsController < ApplicationController
     @booking.confirmation_number = SecureRandom.base36(8)
     if @booking.save
       flash[:success] = "Success! Your Booking is complete. 
-      #{@booking.flight.airline} will contact you with boarding details."
+      #{@booking.flight.airline} will email you with boarding details."
       redirect_to @booking
     else
-      render :new
+      flash[:danger] = "Failed to book flight without passenger information."
+      redirect_to new_booking_path(@booking, 
+                                   tickets: booking_params[:tickets],
+                                   flight_id: booking_params[:flight_id])
     end
   end
 

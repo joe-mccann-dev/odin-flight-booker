@@ -1,7 +1,7 @@
 <section class="section">
   <div class="columns">
     <div class="column is-half is-offset-one-quarter">
-      <h1 class="has-text-centered has-text-light title is-size-5-mobile">Flight Finder</h1>
+      <h1 class="flight-finder has-text-centered has-text-light title is-size-5-mobile">Flight Finder</h1>
       <% if params_present_and_no_flights_found?%>
         <%= render 'search_parameters' %>
         <p class="notification is-warning has-text-centered">
@@ -16,5 +16,3 @@
     </div>
   </div>
 </section>
-
-

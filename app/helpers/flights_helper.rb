@@ -7,6 +7,10 @@ module FlightsHelper
     flight.departure_time.strftime("%l:%M %p")
   end
 
+  def short_date_format(flight)
+    flight.departure_time.to_date.strftime("%Y-%m-%d")
+  end
+
   def duration_formatted(flight)
     duration = flight.duration.to_datetime
     hours = duration.hour

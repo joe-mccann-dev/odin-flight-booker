@@ -8,6 +8,8 @@ body {
 nav {
   background: linear-gradient(45deg, #000, #fff);
   font-family: 'Charm', cursive;
+  letter-spacing: 4px;
+  
 }
 
 .huginn-muninn {
@@ -44,7 +46,15 @@ select {
   white-space: nowrap;
   line-height: 24px;
   font-size: 14px;
-  width: 8rem;
+  width: 12rem;
+}
+
+@media 
+only screen and (max-width: 1270px),
+(min-device-width: 1280px) and (max-device-width: 1440px) {
+  select {
+    width: 8rem;
+  }
 }
 
 @media 
@@ -58,4 +68,24 @@ only screen and (max-width: 760px),
     font-size: 85%;
     width: 85%;
   }
+}
+
+.flight-finder {
+  // background: linear-gradient(45deg, #fff, #000);
+  padding: 16px;
+  border-bottom: solid 2px #dbdbdb;
+  letter-spacing: 8px;
+  font-family: 'Charm', cursive;
+}
+
+.raven-reservations {
+  letter-spacing: 4px;
+}
+
+select option{
+  font-size: 1rem;
+}
+
+.btn {
+  width: 10rem;
 }

@@ -1,25 +1,52 @@
-<%= render 'booking_info' %>
+<section class="section">
 
-<p>
-  Please fill out info for <%= pluralize_passengers %>.
-</p>
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <div class="columns is-centered ">
+        <div class="column is-full">
+        <p class="notification is-info has-text-centered">Your booking is almost complete. Please fill out passenger info below.</p>
+          <p class="subtitle is-size-4 has-text-light has-text-centered">Finish booking</p>
+          <%= render 'booking_info' %>
+          <p class="subtitle has-text-light has-text-centered">Fill out passenger info for <%= pluralize(@number_of_passengers, 'passenger')%>.</p>
+          <%= form_with(model: @booking) do |f| %>
+            <ol>
+              <%= f.fields_for :passengers do |passenger_form| %>
+                <li class="is-size-4-desktop">
+                  <div class="columns">
+                    <div class="column is-half">
+                      <div class="field">
+                        <%= passenger_form.label :name, class: "ml-2 label has-text-light is-size-5-desktop is-size-6-mobile" %>
+                        <div class="control">
+                          <%= passenger_form.text_field :name, class: "input"%>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="column is-half">
+                      <div class="field">
+                        <%= passenger_form.label :email, class: "label has-text-light is-size-5-desktop is-size-6-mobile" %>
+                        <div class="control">
+                          <%= passenger_form.email_field :email, class: "input" %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              <% end %>
+            </ol>
 
-<%= form_with(model: @booking) do |f| %>
-  <ul>
-    <%= f.fields_for :passengers do |passenger_form| %>
-      <li>
-        <%= passenger_form.label :name %>
-        <%= passenger_form.text_field :name %>
+            <%= f.hidden_field :tickets,             value: params[:tickets] %>
+            <%= f.hidden_field :flight_id,           value: params[:flight_id] %>
+            <div class="field">
+              <div class="control has-text-centered my-6">
+                <%= link_to "Cancel", root_url, class: "mx-1 btn button is-danger is-outlined"%>
+                <%= f.submit "Book Flight", class: "mx-1 btn button is-success is-outlined" %>
+              </div>
+            </div>
 
-        <%= passenger_form.label :email %>
-        <%= passenger_form.email_field :email %>
-      </li>
-      <brp>
-    <% end %>
-  </ul>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <%= f.hidden_field :tickets,             value: params[:tickets] %>
-  <%= f.hidden_field :flight_id,           value: params[:flight_id] %>
-  <%= f.submit "Book Flight" %>
-
-<% end %>
+</section>

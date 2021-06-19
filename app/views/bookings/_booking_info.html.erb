@@ -1,33 +1,27 @@
+  <h1 class="title has-text-centered has-text-light"><%= @flight.airline %> Flight <%= @flight.flight_number %></h1>
+  <div class="columns is-centered">
+    <table class="table is-hoverable has-text-centered my-3">
+      <thead>
+        <tr class="has-text-weight-bold has-background-info-light is-size-6-mobile">
+          <td>Airline</td>
+          <td>Flight Number</td>
+          <td>Origin</td>
+          <td>Destination</td>
+          <td>Date</td>
+          <td>Departure Time</td>
+          <td>Duration</td>
+        </tr>
+      </thead>
+      <tr class="is-size-6-mobile">
+        <td><%= @flight.airline %></td>
+        <td><%= @flight.flight_number %></td>
+        <td><%= @flight.origin_airport.code %></td>
+        <td><%= @flight.destination_airport.code %></td>
+        <td><%= short_date_format(@flight) %></td>
+        <td><%= short_time_format(@flight) %></td>
+        <td><%= duration_formatted(@flight) %></td>
+      </tr>
+    </table>
+  </div>
 
-<h4>Booking Info</h4>
-
-<p>
-  <span>Airline</span>
-  <%= @flight.airline %>
-</p>
-
-<p>
-  <span>Flight Number</span>
-  <%= @flight.flight_number %>
-</p>
-
-<p>
-  <span>Departing</span>
-  <%= @flight.origin_airport.code %>
-</p>
-
-<p>
-  <span>Departure Time</span>
-  <%= short_time_format(@flight) %>
-</p>
-
-<p>
-  <span>Duration</span>
-  <%= duration_formatted(@flight) %>
-</p>
-
-<p>
-  <span>Arriving</span>
-  <%= @flight.destination_airport.code %>
-</p>
-
+  
