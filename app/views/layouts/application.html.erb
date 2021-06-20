@@ -41,7 +41,7 @@
     </nav>
 
     <% flash.each do |message_type, message| %>
-      <%= content_tag(:p, message, class: "notification is-#{message_type}") %>
+      <%= content_tag(:p, message, class: "notification is-#{message_type} has-text-centered has-text-weight-bold") %>
     <% end %>
     <section class="section">
       <%= yield %>

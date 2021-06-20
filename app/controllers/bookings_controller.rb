@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
 
   def new
     if params[:tickets].present?
+      flash[:info] = "Your booking is almost complete. Please fill out passenger info below."
       @booking = Booking.new
       @flight = Flight.find(params[:flight_id])
       @number_of_passengers = params[:tickets].to_i
