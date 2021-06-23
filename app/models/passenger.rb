@@ -4,4 +4,7 @@ class Passenger < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true
+
+  validate
+
 end

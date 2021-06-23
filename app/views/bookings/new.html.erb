@@ -1,5 +1,4 @@
 <section class="section">
-
   <div class="columns">
     <div class="column is-half is-offset-one-quarter">
       <div class="columns is-centered ">
@@ -7,45 +6,9 @@
           <p class="subtitle is-size-4 has-text-light has-text-centered">Finish booking</p>
           <%= render 'booking_info' %>
           <p class="subtitle has-text-light has-text-centered">Fill out passenger info for <%= pluralize(@number_of_passengers, 'passenger')%>.</p>
-          <%= form_with(model: @booking) do |f| %>
-            <ol>
-              <%= f.fields_for :passengers do |passenger_form| %>
-                <li class="is-size-4-desktop">
-                  <div class="columns">
-                    <div class="column is-half">
-                      <div class="field">
-                        <%= passenger_form.label :name, class: "ml-2 label has-text-light is-size-5-desktop is-size-6-mobile" %>
-                        <div class="control">
-                          <%= passenger_form.text_field :name, class: "input"%>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="column is-half">
-                      <div class="field">
-                        <%= passenger_form.label :email, class: "ml-2 label has-text-light is-size-5-desktop is-size-6-mobile" %>
-                        <div class="control">
-                          <%= passenger_form.email_field :email, class: "input" %>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              <% end %>
-            </ol>
-
-            <%= f.hidden_field :tickets,             value: params[:tickets] %>
-            <%= f.hidden_field :flight_id,           value: params[:flight_id] %>
-            <div class="field">
-              <div class="control has-text-centered my-6">
-                <%= link_to "Cancel", root_url, class: "mx-1 my-1 btn button is-danger is-outlined"%>
-                <%= f.submit "Book Flight", class: "mx-1 my-1 btn button is-success is-outlined" %>
-              </div>
-            </div>
-
-          <% end %>
+          <%= render 'passenger_form' %>
         </div>
       </div>
     </div>
   </div>
-
 </section>

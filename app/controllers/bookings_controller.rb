@@ -2,11 +2,12 @@ class BookingsController < ApplicationController
 
   def new
     if params[:tickets].present?
-      flash[:info] = "Your booking is almost complete. Please fill out passenger info below."
+      unless flash[:error]
+        flash[:info] = "Your booking is almost complete. Please fill out passenger info below."
+      end
       @booking = Booking.new
+      set_number_of_passengers(@booking)
       @flight = Flight.find(params[:flight_id])
-      @number_of_passengers = params[:tickets].to_i
-      @number_of_passengers.times { @booking.passengers.build }
     else
       flash[:warning] = "Please select number of passengers before booking a flight."
       redirect_to root_path
@@ -15,16 +16,14 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.confirmation_number = SecureRandom.base36(8)
+    set_confirmation_number(@booking)
     if @booking.save
       flash[:success] = "Success! Your Booking is complete. 
       #{@booking.flight.airline} will email you with boarding details."
       redirect_to @booking
     else
-      flash[:danger] = "Failed to book flight without passenger information."
-      redirect_to new_booking_path(@booking, 
-                                   tickets: booking_params[:tickets],
-                                   flight_id: booking_params[:flight_id])
+      flash[:error] = @booking.errors.full_messages.to_sentence
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -47,5 +46,18 @@ class BookingsController < ApplicationController
         :confirmation_number,
         passengers_attributes: [:name, :email]
       )
+    end
+
+    def set_number_of_passengers(booking)
+      @number_of_passengers = params[:tickets].to_i
+      @number_of_passengers.times { booking.passengers.build }
+    end
+
+    def set_confirmation_number(booking)
+      begin
+        confirmation_number = SecureRandom.base36(8)
+      end while Booking.exists?(confirmation_number: confirmation_number)
+  
+      booking.confirmation_number = confirmation_number
     end
 end
