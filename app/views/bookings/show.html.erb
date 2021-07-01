@@ -1,25 +1,22 @@
-<section class="section">
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
-      <div class="columns is-centered ">
-        <div class="column is-full">
-          <%= render 'booking_info' %>
-          <div class="columns">
-            <div class="column is-half is-offset-one-quarter">
-              <h1 class="my-5 title is-size-5 has-text-light has-text-centered">
-                Confirmation Number
-              </h1>
-              <h2 class="subtitle is-size-4 has-background-info has-text-light has-text-centered is-uppercase py-2">
-                <%= @booking.confirmation_number %>
-              </h2>
-              <h3 class="subtitle is-size-5 has-text-light has-text-centered">
-                Passenger Info for <%= pluralize(@booking.tickets, 'passenger') %>
-              </h3>
-              <div class="columns is-centered">
-                <div class="box has-background-grey-dark">
-                  <%= render 'passenger_info' %>
-                </div>
-
+<div class="columns">
+  <div class="column is-half is-offset-one-quarter">
+    <div class="columns is-centered ">
+      <div class="column is-full">
+        <%= render 'booking_info' %>
+        <div class="columns">
+          <div class="column is-half is-offset-one-quarter">
+            <h1 class="my-5 title is-size-5 has-text-light has-text-centered">
+              Confirmation Number
+            </h1>
+            <h2 class="subtitle is-size-4 has-background-info has-text-light has-text-centered is-uppercase py-2">
+              <%= @booking.confirmation_number %>
+            </h2>
+            <h3 class="subtitle is-size-5 has-text-light has-text-centered">
+              Passenger Info for <%= pluralize(@booking.tickets, 'passenger') %>
+            </h3>
+            <div class="columns is-centered">
+              <div class="box has-background-grey-dark">
+                <%= render 'passenger_info' %>
               </div>
             </div>
           </div>
@@ -27,4 +24,4 @@
       </div>
     </div>
   </div>
-</section>
+</div>

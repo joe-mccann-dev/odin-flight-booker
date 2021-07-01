@@ -1,14 +1,12 @@
-<section class="section">
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
-      <div class="columns is-centered ">
-        <div class="column is-full">
-          <p class="subtitle is-size-4 has-text-light has-text-centered">Finish booking</p>
-          <%= render 'booking_info' %>
-          <p class="subtitle has-text-light has-text-centered">Fill out passenger info for <%= pluralize(@number_of_passengers, 'passenger')%>.</p>
-          <%= render 'passenger_form' %>
-        </div>
+<div class="columns">
+  <div class="column is-half is-offset-one-quarter">
+    <div class="columns is-centered ">
+      <div class="column is-full">
+        <p class="subtitle is-size-4 has-text-light has-text-centered">Finish booking</p>
+        <%= render 'booking_info' %>
+        <p class="subtitle has-text-light has-text-centered">Fill out passenger info for <%= pluralize(@number_of_passengers, 'passenger')%>.</p>
+        <%= render 'passenger_form' %>
       </div>
     </div>
   </div>
-</section>
+</div>
