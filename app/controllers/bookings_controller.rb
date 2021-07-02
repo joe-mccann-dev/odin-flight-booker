@@ -6,7 +6,7 @@ class BookingsController < ApplicationController
         flash[:info] = "Your booking is almost complete. Please fill out passenger info below."
       end
       @booking = Booking.new
-      set_number_of_passengers(@booking)
+      build_booking_passengers(@booking)
       @flight = Flight.find(params[:flight_id])
     else
       flash[:warning] = "Please select number of passengers before booking a flight."
@@ -48,7 +48,7 @@ class BookingsController < ApplicationController
       )
     end
 
-    def set_number_of_passengers(booking)
+    def build_booking_passengers(booking)
       @number_of_passengers = params[:tickets].to_i
       @number_of_passengers.times { booking.passengers.build }
     end

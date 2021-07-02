@@ -5,6 +5,15 @@ class Passenger < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
 
-  validate
+  validate :existing_passenger_email_uses_same_name
+
+  private
+
+  def existing_passenger_email_uses_same_name
+    if Passenger.all.any? { |pass| self.email == pass.email && self.name != pass.name }
+      errors.add(:email, "exists with a different name")
+    end
+  end
+
 
 end

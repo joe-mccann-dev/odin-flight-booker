@@ -8,6 +8,7 @@ class Booking < ApplicationRecord
                                   uniqueness: true
   
   validate :all_form_passengers_different
+  validate :all_flight_passengers_are_unique
   
   def self.search(search)
     if search
@@ -22,13 +23,28 @@ class Booking < ApplicationRecord
 
     def all_form_passengers_different
       unless current_passengers_unique_to_each_other?
-        errors.add(:booking, "passengers must have their own email.")
+        errors.add(:passengers, "must have their own email")
       end
     end
 
     def current_passengers_unique_to_each_other?
       self.passengers.size == self.passengers.uniq { |passenger| passenger.email }
                                              .size
+    end
+
+    def all_flight_passengers_are_unique
+      flight = Flight.find(self.flight.id)
+      if flight_contains_form_passengers?
+        errors.add(:passengers, "email entered is already registered to this flight")
+      end
+    end
+
+    def flight_contains_form_passengers?
+      passengers.any? do |passenger|
+        flight.passengers.any? do |p|
+          passenger.email == p.email
+        end
+      end
     end
 
 end
