@@ -18,9 +18,9 @@ nav {
   margin-bottom: 10px;
 }
 
-.icon-top {
-  transform: rotate(180deg);
-}
+// .icon-top {
+//   transform: rotate(180deg);
+// }
 
 .icon-big {
   font-size: 350%;
@@ -71,7 +71,6 @@ only screen and (max-width: 760px),
 }
 
 .flight-finder {
-  // background: linear-gradient(45deg, #fff, #000);
   padding: 16px;
   border-bottom: solid 2px #dbdbdb;
   letter-spacing: 8px;

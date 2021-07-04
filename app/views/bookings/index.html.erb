@@ -19,9 +19,8 @@
       </div>
 
       <div class="columns">
-      
         <% if bookings_searched_and_found? %>
-          <div class="box has-background-info-light has-text-dark column is-half is-offset-one-quarter">
+          <div class="box has-background-grey-dark has-text-light column is-half is-offset-one-quarter">
             <p class="is-size-5-desktop has-text-centered">
               <%= pluralize(@bookings.size, 'booking')%> found.
             </p>

@@ -1,7 +1,7 @@
 <div class="table-container">
   <table class="table is-hoverable has-text-centered">
     <thead>
-      <tr class="has-text-weight-bold has-background-info-light is-size-6-mobile">
+      <tr class="has-background-info-light is-size-6-mobile">
         <td>Airline</td>
         <td>Flight Number</td>
         <td>Departure Time</td>
@@ -16,7 +16,7 @@
       </tr>
     </thead>
     <% @available_flights.each do |flight| %>
-      <tr class="is-size-6-mobile">
+      <tr class="has-text-weight-bold is-size-6-mobile">
         <td><%= flight.airline %></td>
         <td><%= flight.flight_number %></td>
         <td><%= short_time_format(flight) %></td>
@@ -25,7 +25,7 @@
           <%= button_to "Book Flight",
                         new_booking_path,
                         method: :get,
-                        class: "button is-small is-success",
+                        class: "button book-flight is-small is-success has-text-weight-bold ",
                         params: { flight_id: flight.id,
                                   tickets:   params[:tickets]} %>
         </td>

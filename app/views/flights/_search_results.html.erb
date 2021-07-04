@@ -1,18 +1,18 @@
 <div class="huginn-muninn">
-  <p class="has-text-centered">
+  <p class="is-size-6-mobile is-size-5-desktop has-text-centered">
     <a class="has-text-light is-link" href="https://en.wikipedia.org/wiki/Huginn_and_Muninn" target="_blank">Huginn and Muninn</a> searched all of Midgard and returned with . . .
   </p>
 </div>
-<p class="has-text-centered has-text-weight-bold is-size-3-desktop is-size-5-mobile">
+<p class="has-text-centered has-text-weight-bold is-size-5-widescreen is-size-6">
   <%= pluralize(@available_flights.count, 'Flight') %> for <%= long_date_format %>
 </p>
-<div class="icon-top has-text-centered">
-  <span class="icon-big">
-    <ion-icon name="airplane"></ion-icon>
-  </span>
-</div>
+<section class="section">
+  <div class="columns is-centered">
+    <%= render 'results_table' %>
+  </div>
+</section>
 <div class="columns">
-  <div class="has-text-centered column is-half">
+  <div class="has-text-centered column is-one-third">
     <p class="has-text-weight-bold">
       ORIGIN
     </p>
@@ -20,7 +20,12 @@
       <%= show_selected_airport(params[:origin_id]) %>
     </p>
   </div>
-  <div class="has-text-centered column is-half">
+  <div class="column is-one-third icon-top has-text-centered">
+    <span class="icon-big">
+      <ion-icon name="airplane"></ion-icon>
+    </span>
+  </div>
+  <div class="has-text-centered column is-one-third">
     <p class="has-text-weight-bold">
       DESTINATION
     </p>
@@ -29,8 +34,3 @@
     </p>
   </div>
 </div>
-<section class="section">
-  <div class="columns is-centered">
-    <%= render 'results_table' %>
-  </div>
-</section>
