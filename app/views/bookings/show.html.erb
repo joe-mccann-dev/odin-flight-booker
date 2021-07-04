@@ -12,13 +12,16 @@
               <%= @booking.confirmation_number %>
             </h2>
             <div class="columns is-centered">
-              <div class="box has-background-grey-dark">
-                <h3 class="subtitle is-6 has-background-info-light has-text-dark mx-6 has-text-centered">
-                  Passenger Info for <%= pluralize(@booking.tickets, 'passenger') %>
-                </h3>
-                <%= render 'passenger_info' %>
+              <div class="column">
+                <div class="box has-background-grey-dark">
+                  <h3 class="subtitle is-6 has-background-info-light has-text-dark mx-6 has-text-centered">
+                    Passenger Info for <%= pluralize(@booking.tickets, 'passenger') %>
+                  </h3>
+                  <%= render 'passenger_info' %>
+                </div>
               </div>
             </div>
+
             <div class="has-text-centered mt-5">
               <%= link_to "Book Another Flight", flights_path, class: "button is-primary is-outlined" %>
             </div>
