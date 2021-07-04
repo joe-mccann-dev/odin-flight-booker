@@ -20,9 +20,7 @@
               </div>
             </div>
             <div class="has-text-centered mt-5">
-              <% if URI(request.referer).path == new_booking_path %>
-                <%= link_to "Book Another Flight", flights_path, class: "button is-primary is-outlined" %>
-              <% end %>
+              <%= link_to "Book Another Flight", flights_path, class: "button is-primary is-outlined" %>
             </div>
           </div>
         </div>
