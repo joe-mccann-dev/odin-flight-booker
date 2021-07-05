@@ -23,7 +23,7 @@ class Booking < ApplicationRecord
 
     def all_form_passengers_different
       unless current_passengers_unique_to_each_other?
-        errors.add(:passengers, "must have their own email")
+        errors.add(:booking, "passengers must have their own email.")
       end
     end
 
@@ -35,7 +35,7 @@ class Booking < ApplicationRecord
     def all_flight_passengers_are_unique
       flight = Flight.find(self.flight.id)
       if flight_contains_form_passengers?
-        errors.add(:passengers, "email entered is already registered to this flight")
+        errors.add(:passengers, "email entered is already registered to this flight.")
       end
     end
 
