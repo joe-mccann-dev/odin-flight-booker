@@ -8,13 +8,13 @@
             <h1 class="my-5 title is-size-5 has-text-light has-text-centered">
               Confirmation Number
             </h1>
-            <h2 class="subtitle is-size-4 has-background-info has-text-light has-text-centered is-uppercase py-2 mb-6">
+            <h2 class=" box subtitle is-size-4 has-background-info has-text-light has-text-centered is-uppercase py-2 mb-6">
               <%= @booking.confirmation_number %>
             </h2>
             <div class="columns is-centered">
               <div class="column">
                 <div class="box has-background-grey-dark">
-                  <h3 class="subtitle is-6 has-background-info-light has-text-dark mx-6 has-text-centered">
+                  <h3 class="box subtitle is-6 has-background-grey-darker has-text-info mx-4 px-3 py-3 has-text-centered">
                     Passenger Info for <%= pluralize(@booking.tickets, 'passenger') %>
                   </h3>
                   <%= render 'passenger_info' %>

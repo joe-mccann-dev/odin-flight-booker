@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Airport, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe 'Associations' do
+    it { should have_many(:departing_flights) }
+    it { should have_many(:arriving_flights) }
+  end
 end

@@ -29,9 +29,23 @@ RSpec.describe Passenger, type: :model do
       expect(passenger).to_not be_valid
     end
 
+    it 'fails validation with too long an email' do
+      passenger = build(:passenger, email: 's' * 255 + "@example.com")
+      expect(passenger).to_not be_valid
+    end
+
+    it 'fails validation with an invalid email' do
+      passenger = build(:passenger, email: 'john@smith.')
+      expect(passenger).to_not be_valid
+    end
+
     it 'fails validation if a passenger with a different name tries to use an existing email' do
       passenger_with_different_name_same_email = build(:passenger, name: 'Different Name', email: subject.email )
       expect(passenger_with_different_name_same_email).to_not be_valid
     end
+  end
+
+  describe 'Associations' do
+    
   end
 end
