@@ -10,16 +10,19 @@ RSpec.describe "Flights", type: :system do
       it 'allows them to select parameters and view available flights', js: true do
        
         # visit home page
-        visit '/flights'
+        visit '/'
 
-        # find('#origin_id').find(:xpath, 'option[1]').select_option
-        # find('#destination_id').find(:xpath, 'option[1]').select_option
-        save_and_open_page
-        select("Boston, MA", from: 'origin_id', visible: false)
+        # select parameters
+        select('Boston, MA', from: 'origin_id')
+        select('New York, NY', from: 'destination_id')
+        select('2021-07-08', from: 'departure_time')
+        select('2', from: 'tickets')
         
+        # get results
+        click_on 'Find Flights'
+        # continue to booking page
+        expect(page).to have_button('Book Flight')
 
-        # click_on 'Find Flights'
-        # expect(page).to have_content('Book Flight')
       end
     end
   end
