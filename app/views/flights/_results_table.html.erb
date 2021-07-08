@@ -25,6 +25,7 @@
           <%= button_to "Book Flight",
                         new_booking_path,
                         method: :get,
+                        data: { test_id: flight.id },
                         class: "button book-flight is-small is-success has-text-weight-bold ",
                         params: { flight_id: flight.id,
                                   tickets:   params[:tickets]} %>

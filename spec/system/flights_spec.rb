@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "Flights", type: :system do
   before do
     driven_by(:rack_test)
+    Rails.application.load_seed
   end
 
   describe 'Searching for a flight' do
@@ -20,7 +21,7 @@ RSpec.describe "Flights", type: :system do
         
         # get results
         click_on 'Find Flights'
-        # continue to booking page
+        # option to to booking page
         expect(page).to have_button('Book Flight')
 
       end

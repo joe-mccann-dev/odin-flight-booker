@@ -44,7 +44,7 @@ airports.each do |airport|
       2.times do
         Flight.create(
                       airline: airlines.sample,
-                      flight_number: Faker::Number.unique.between(from: 100, to: 10000),
+                      flight_number: Faker::Number.unique.between(from: 100, to: 100000),
                       origin_id: airport.id, 
                       destination_id: other_airport.id, 
                       duration: DateTime.parse("#{distance}:#{minute}:00").to_datetime,
