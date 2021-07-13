@@ -1,4 +1,6 @@
 class Passenger < ApplicationRecord
+
+  has_many :bookings
   
   validates :name, presence: true, length: { in: 3..50 }
 

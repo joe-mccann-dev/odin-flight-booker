@@ -44,8 +44,4 @@ RSpec.describe Passenger, type: :model do
       expect(passenger_with_different_name_same_email).to_not be_valid
     end
   end
-
-  describe 'Associations' do
-    
-  end
 end

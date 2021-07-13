@@ -33,7 +33,6 @@ class Booking < ApplicationRecord
     end
 
     def all_flight_passengers_are_unique
-      flight = Flight.find(self.flight.id)
       if flight_contains_form_passengers?
         errors.add(:passengers, "email entered is already registered to this flight.")
       end
