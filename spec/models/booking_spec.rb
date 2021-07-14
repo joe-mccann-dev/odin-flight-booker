@@ -21,7 +21,7 @@ RSpec.describe Booking, type: :model do
 
       context "a user tries to book a flight that already contains an entered email address" do
         it "fails validation" do
-          # create a passenger and have their info be that same as flight.passengers.first's info
+          # build a passenger and have their info be the same as flight.passengers.first's info
           passenger_with_same_info = build(:passenger, name: flight.passengers.first.name, email: flight.passengers.first.email)
           # add that passenger to built booking
           booking.passengers << passenger_with_same_info
