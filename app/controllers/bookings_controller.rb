@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Controls the creation of Bookings. Allows search functionality
 class BookingsController < ApplicationController
   def new
     if params[:tickets].present?
@@ -13,7 +16,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    set_confirmation_number(@booking)
+    generate_confirmation_number(@booking)
     if @booking.save
       flash[:success] = "Success! Your Booking is complete.
       #{@booking.flight.airline} will email you with boarding details."
@@ -50,7 +53,7 @@ class BookingsController < ApplicationController
     @number_of_passengers.times { booking.passengers.build }
   end
 
-  def set_confirmation_number(booking)
+  def generate_confirmation_number(booking)
     begin
       confirmation_number = SecureRandom.base36(8)
     end while Booking.exists?(confirmation_number: confirmation_number)

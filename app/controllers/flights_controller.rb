@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Controls searching for flights
 class FlightsController < ApplicationController
   def index
     @available_flights = find_available_flights

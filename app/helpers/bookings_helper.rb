@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Helpers for booking views
 module BookingsHelper
   def pluralize_passengers
     pluralize(params[:tickets].to_i, 'passenger')
