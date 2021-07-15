@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 airports = []
 
 abbreviations = {
@@ -38,9 +30,10 @@ airports.each do |airport|
   other_airports = airports.reject { |a| a == airport }
 
   other_airports.each_with_index do |other_airport, distance|
-    30.times do |day|
+    31.times do |day|
+      # ensure a short flight is at least 45 minutes long
       minute = distance.zero? ? (45..59).to_a.sample : (rand * 60).floor
-      # create between 2 flights to each "other_airport" for each day for the next 30 days
+      # create flights to each "other_airport" for each day for the next 30 days
       2.times do
         Flight.create(
                       airline: airlines.sample,
