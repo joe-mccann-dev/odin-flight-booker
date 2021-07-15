@@ -1,5 +1,4 @@
 class FlightsController < ApplicationController
-
   def index
     @available_flights = find_available_flights
   end
@@ -10,11 +9,11 @@ class FlightsController < ApplicationController
 
   def find_available_flights
     return [] unless params[:origin_id].present?
-    
+
     date = params[:departure_time].to_datetime
-    flights.where(origin_id:      params[:origin_id],
+    flights.where(origin_id: params[:origin_id],
                   destination_id: params[:destination_id],
-                  departure_time: within_selected_date(date) )
+                  departure_time: within_selected_date(date))
   end
 
   def within_selected_date(date)

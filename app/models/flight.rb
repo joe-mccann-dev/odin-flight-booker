@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# flights that a passenger can book
 class Flight < ApplicationRecord
   has_many :bookings
   has_many :passengers, through: :bookings

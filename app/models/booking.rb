@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Through table for flights and passengers.
 class Booking < ApplicationRecord
   belongs_to :flight
 
@@ -11,12 +14,12 @@ class Booking < ApplicationRecord
   validate :all_flight_passengers_are_unique
 
   def self.search(search)
-    if search
-      booking = joins(:passengers)
-                .where(passengers: { email: search.strip.downcase })
-                .or(where(confirmation_number: search.strip.downcase))
-                .includes(:passengers, flight: %i[origin_airport destination_airport])
-    end
+    return unless search
+
+    joins(:passengers)
+      .where(passengers: { email: search.strip.downcase })
+      .or(where(confirmation_number: search.strip.downcase))
+      .includes(:passengers, flight: %i[origin_airport destination_airport])
   end
 
   private
@@ -26,7 +29,7 @@ class Booking < ApplicationRecord
   end
 
   def current_passengers_unique_to_each_other?
-    passengers.size == passengers.uniq { |passenger| passenger.email }
+    passengers.size == passengers.uniq(&:email)
                                  .size
   end
 
