@@ -64,8 +64,11 @@ group :test, :development do
   gem 'guard', '~> 2.17'
   gem 'guard-rspec', '~> 4.7', '>= 4.7.3', require: false 
   gem 'factory_bot_rails', '~> 6.2'
-  gem 'faker', '~> 2.18'
   gem 'simplecov', require: false
+end
+
+group :test, :development, :production do
+  gem 'faker', '~> 2.18'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
