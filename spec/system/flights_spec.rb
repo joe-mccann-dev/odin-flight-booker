@@ -16,7 +16,7 @@ RSpec.describe "Flights", type: :system do
         # select parameters
         select('Boston, MA', from: 'origin_id')
         select('New York, NY', from: 'destination_id')
-        select('2021-07-08', from: 'departure_time')
+        select('2021-07-20', from: 'departure_time')
         select('2', from: 'tickets')
         
         # get results
