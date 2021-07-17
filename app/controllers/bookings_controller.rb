@@ -4,7 +4,7 @@
 class BookingsController < ApplicationController
   def new
     if params[:tickets].present?
-      flash[:info] = 'Your booking is almost complete. Please fill out passenger info below.' unless flash[:error]
+      flash.now[:info] = 'Your booking is almost complete. Please fill out passenger info below.' unless flash[:error]
       @booking = Booking.new
       build_booking_passengers(@booking)
       @flight = Flight.find(params[:flight_id])
