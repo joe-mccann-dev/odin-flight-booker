@@ -47,6 +47,8 @@ group :development do
   gem 'spring'
   gem 'better_errors', '~> 2.9', '>= 2.9.1'
   gem 'bullet', '~> 6.1', '>= 6.1.4'
+  # Open emails in browser instead of sending
+  gem "letter_opener"
 end
 
 group :test do
