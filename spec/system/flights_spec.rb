@@ -16,7 +16,8 @@ RSpec.describe "Flights", type: :system do
         # select parameters
         select('Boston, MA', from: 'origin_id')
         select('New York, NY', from: 'destination_id')
-        select('2021-07-20', from: 'departure_time')
+        # select first option that isn't the word "Date" and is in fact an actual date.
+        find('#departure_time option:nth-of-type(3)').select_option
         select('2', from: 'tickets')
         
         # get results

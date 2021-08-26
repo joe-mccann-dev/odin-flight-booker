@@ -16,7 +16,6 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    generate_confirmation_number(@booking)
     if @booking.save
       send_confirmation_emails(@booking)
       flash[:success] = "Success! Your Booking is complete.
@@ -53,19 +52,14 @@ class BookingsController < ApplicationController
     @number_of_passengers = params[:tickets].to_i
     @number_of_passengers.times { booking.passengers.build }
   end
-
-  def generate_confirmation_number(booking)
-    begin
-      confirmation_number = SecureRandom.base36(8)
-    end while Booking.exists?(confirmation_number: confirmation_number)
-
-    booking.confirmation_number = confirmation_number
-  end
-
+  
   def send_confirmation_emails(booking)
     booking.passengers.each do |passenger|
       # #with sends params to PassengerMailer
-      PassengerMailer.with(booking: booking, passenger: passenger).confirmation_email.deliver_later
+      PassengerMailer.with(booking: booking, 
+                           passenger: passenger)
+                           .confirmation_email
+                           .deliver_later
     end
   end
 end

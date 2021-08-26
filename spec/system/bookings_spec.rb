@@ -19,7 +19,8 @@ RSpec.describe "Bookings", type: :system do
         # select parameters
         select("Boston, MA", from: "origin_id")
         select("New York, NY", from: "destination_id")
-        select("2021-07-20", from: "departure_time")
+        # select second date (first option is the dropdown title "Date")
+        find("#departure_time option:nth-of-type(3)").select_option
         select("2", from: "tickets")
 
         # get results
@@ -117,7 +118,8 @@ RSpec.describe "Bookings", type: :system do
         # select parameters
         select("Boston, MA", from: "origin_id")
         select("New York, NY", from: "destination_id")
-        select("2021-07-20", from: "departure_time")
+        # select second date (first option is the dropdown title "Date")
+        find("#departure_time option:nth-of-type(3)").select_option
         select("2", from: "tickets")
 
         # get results
@@ -148,7 +150,8 @@ RSpec.describe "Bookings", type: :system do
         # select parameters
         select("Boston, MA", from: "origin_id")
         select("New York, NY", from: "destination_id")
-        select("2021-07-20", from: "departure_time")
+        # select second date (first option is the dropdown title "Date")
+        find("#departure_time option:nth-of-type(3)").select_option
         # note absence of tickets param
 
         # get results
@@ -167,14 +170,12 @@ RSpec.describe "Bookings", type: :system do
   end
 
   describe "Searching for a Booking" do
-    
-    subject(:booking) { create(:booking, passengers: [ create(:passenger)]) }
+    subject(:booking) { create(:booking, passengers: [create(:passenger)]) }
     subject(:passenger) { booking.passengers.first }
 
     context "a passenger wants to look up their booking by confirmation number" do
-
       before(:each) do
-        visit '/bookings'
+        visit "/bookings"
         fill_in "search", with: booking.confirmation_number
         click_on "Search"
       end
@@ -194,9 +195,8 @@ RSpec.describe "Bookings", type: :system do
     end
 
     context "a passenger wants to look up their bookings by their email address" do
-      
       before(:each) do
-        visit '/bookings'
+        visit "/bookings"
         fill_in "search", with: passenger.email
         click_on "Search"
       end

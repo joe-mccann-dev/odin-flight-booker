@@ -9,4 +9,12 @@ module BookingsHelper
   def bookings_searched_and_found?
     params[:search] && @bookings.any?
   end
+
+  def generate_confirmation_number
+    begin
+      confirmation_number = SecureRandom.base36(8)
+    end while Booking.exists?(confirmation_number: confirmation_number)
+
+    confirmation_number
+  end
 end
