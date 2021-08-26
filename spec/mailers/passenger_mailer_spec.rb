@@ -16,5 +16,13 @@ RSpec.describe PassengerMailer, type: :mailer do
     it "includes a url to the booking page" do
       expect(mail.body.encoded).to include(url)
     end
+
+    it "includes the airline" do
+      expect(mail.body.encoded).to include(booking.flight.airline)
+    end
+
+    it "includes the flight number" do
+      expect(mail.body.encoded).to include(booking.flight.flight_number.to_s)
+    end
   end
 end
