@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for booking your flight, <%= @passenger.name %></h1>
+    <p>
+      You have successfully booked <%= @booking.flight.airline %> flight #<%= @booking.flight.flight_number %>.
+    </p>
+    <p>
+      <%= @booking.flight.airline %> airlines will contact you soon with your boarding pass.
+    </p>
+    <p>
+      To view your booking information, please visit <%= link_to "booking details", @booking_url %>.
+    </p>
+    <p>Thanks for booking with Raven Reservations, we hope you enjoy your flight!</p>
+  </body>
+</html>

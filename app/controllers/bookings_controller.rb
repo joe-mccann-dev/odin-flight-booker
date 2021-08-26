@@ -18,6 +18,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     generate_confirmation_number(@booking)
     if @booking.save
+      send_confirmation_emails(@booking)
       flash[:success] = "Success! Your Booking is complete.
       #{@booking.flight.airline} will email you with boarding details."
       redirect_to @booking
@@ -59,5 +60,12 @@ class BookingsController < ApplicationController
     end while Booking.exists?(confirmation_number: confirmation_number)
 
     booking.confirmation_number = confirmation_number
+  end
+
+  def send_confirmation_emails(booking)
+    booking.passengers.each do |passenger|
+      # #with sends params to PassengerMailer
+      PassengerMailer.with(booking: booking, passenger: passenger).confirmation_email.deliver_later
+    end
   end
 end

@@ -1,0 +1,10 @@
+
+Thank you for booking your flight, <%= @passenger.name %>
+
+You have successfully booked <%= @booking.flight.airline %> flight #<%= @booking.flight.flight_number %>,
+
+<%= @booking.flight.airline %> airlines will contact you soon with your boarding pass.
+
+To view your booking information, please visit http://127.0.0.1:3000/bookings/<%= @booking.id %> 
+
+Thanks for booking with Raven Reservations, we hope you enjoy your flight!
