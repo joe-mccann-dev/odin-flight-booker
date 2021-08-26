@@ -22,6 +22,9 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
 
+  # default host for development
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
   # Do not eager load code on boot.
   config.eager_load = false
 

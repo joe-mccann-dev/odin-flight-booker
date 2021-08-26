@@ -12,8 +12,8 @@
       <%= @booking.flight.airline %> airlines will contact you soon with your boarding pass.
     </p>
     <p>
-      To view your booking information, please visit <%= link_to "booking details", @booking_url %>.
+      To view your booking information, please visit your <%= link_to "booking details", booking_url(@booking) %> page.
     </p>
-    <p>Thanks for booking with Raven Reservations, we hope you enjoy your flight!</p>
+    <p>Thanks for choosing Raven Reservations, we hope you enjoy your flight!</p>
   </body>
 </html>
