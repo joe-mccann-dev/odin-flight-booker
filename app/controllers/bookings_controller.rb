@@ -4,7 +4,7 @@
 class BookingsController < ApplicationController
   def new
     if params[:tickets].present?
-      flash.now[:info] = 'Your booking is almost complete. Please fill out passenger info below.' unless flash[:error]
+      flash.now[:info] = 'Your booking is almost complete. Please fill out passenger info below.'
       @booking = Booking.new
       build_booking_passengers(@booking)
       @flight = Flight.find(params[:flight_id])
@@ -52,14 +52,14 @@ class BookingsController < ApplicationController
     @number_of_passengers = params[:tickets].to_i
     @number_of_passengers.times { booking.passengers.build }
   end
-  
+
   def send_confirmation_emails(booking)
     booking.passengers.each do |passenger|
       # #with sends params to PassengerMailer
-      PassengerMailer.with(booking: booking, 
+      PassengerMailer.with(booking: booking,
                            passenger: passenger)
-                           .confirmation_email
-                           .deliver_later
+                     .confirmation_email
+                     .deliver_later
     end
   end
 end
