@@ -6,6 +6,7 @@ Upon booking a flight, users are presented with a confirmation number. On the bo
 
 ### Installation
 
+<<<<<<< HEAD
 1. Install Locally.
     - Clone this repo.
     - cd into cloned directory `cd odin-flight-booker`
@@ -27,6 +28,29 @@ Upon booking a flight, users are presented with a confirmation number. On the bo
     - Click "Complete Booking".
     - letter_opener opens confirmation email in a browser tab in development OR
       sends you an actual email in [production](https://raven-reservations.herokuapp.com/)
+=======
+- Install Locally.
+    1. Clone this repo.
+    2. cd into cloned directory `cd odin-flight-booker`
+    3. `bundle install && rails webpacker:install`
+    4. Enter `N` when prompted to overwrite any files.
+
+- Seed the database.
+    1. `rails db:migrate`
+    2. `rails db:seed`
+
+- Start a Rails Server.
+    1. `rails server`
+    2. Navigate to `localhost:3000` in your browser.
+
+- Play around with the app.
+    1. Use the Flight Finder to view available flights
+    2. Click on "Book Flight" next to a returned flight.
+    3. Enter your passenger information.
+    4. Click "Complete Booking".
+    5. letter_opener opens confirmation email in a browser tab in development OR
+       sends you an actual email in [production](https://raven-reservations.herokuapp.com/)
+>>>>>>> 2e1a5c275de3af94717f2e6625787fc3f2065083
 
 ### Running the Tests
 
