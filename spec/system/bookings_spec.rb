@@ -27,6 +27,24 @@ RSpec.describe "Bookings", type: :system do
         click_on "Find Flights"
       end
 
+      context "a user wants to book a flight with two passengers" do
+        it "sends both passengers an email" do
+          # find first available flight through hidden input in form
+          flight_id = find("input[name='flight_id']", match: :first, visible: false).value
+          # find button associated with flight_id and click on it
+          find("input[data-test-id='#{flight_id}']").click
+          expect(page).to have_content("Your booking is almost complete")
+
+          fill_in("booking_passengers_attributes_0_name", with: passenger_0.name)
+          fill_in("booking_passengers_attributes_0_email", with: passenger_0.email)
+          fill_in("booking_passengers_attributes_1_name", with: passenger_1.name)
+          fill_in("booking_passengers_attributes_1_email", with: passenger_1.email)
+
+          # expect that two emails are sent out upon clicking "Complete Booking"
+          expect { click_on "Complete Booking" }.to change { ActionMailer::Base.deliveries.count}.by(2)
+        end
+      end
+
       it "allows them to enter passenger information and book the flight", js: true do
         # find first available flight through hidden input in form
         flight_id = find("input[name='flight_id']", match: :first, visible: false).value

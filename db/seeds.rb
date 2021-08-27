@@ -31,6 +31,7 @@ airports.each do |airport|
 
   other_airports.each_with_index do |other_airport, distance|
     31.times do |day|
+      day += 1
       # ensure a short flight is at least 45 minutes long
       minute = distance.zero? ? (45..59).to_a.sample : (rand * 60).floor
       # create flights to each "other_airport" for each day for the next 30 days
