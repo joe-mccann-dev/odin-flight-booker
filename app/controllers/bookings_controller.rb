@@ -18,8 +18,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     if @booking.save
       send_confirmation_emails(@booking)
-      flash[:success] = "Success! Your Booking is complete.
-      #{@booking.flight.airline} will email you with boarding details."
+      flash[:success] = "Successfully booked #{@booking.flight.airline} flight ##{@booking.flight.flight_number}! A confirmation has been emailed to each passenger."
       redirect_to @booking
     else
       flash[:error] = @booking.errors.full_messages.to_sentence
