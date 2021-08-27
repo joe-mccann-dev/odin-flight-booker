@@ -8,7 +8,7 @@ RSpec.describe PassengerMailer, type: :mailer do
     let(:url) { "http://localhost:3000/bookings/#{booking.id}" }
 
     it "renders the subject" do
-      expect(mail.subject).to eq("Booking Confirmation")
+      expect(mail.subject).to eq("#{booking.flight.airline} Booking Confirmation")
     end
 
     it "renders the recipient email" do

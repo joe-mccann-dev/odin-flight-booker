@@ -6,7 +6,7 @@ class PassengerMailer < ApplicationMailer
   def confirmation_email
     mail(
       to: email_address_with_name(@passenger.email, @passenger.name),
-      subject: 'Booking Confirmation'
+      subject: "#{@booking.flight.airline} Booking Confirmation"
     )
   end
 
