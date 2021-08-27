@@ -25,7 +25,7 @@ Upon booking a flight, users are presented with a confirmation number. On the bo
     - Click on "Book Flight" next to a returned flight.
     - Enter your passenger information.
     - Click "Complete Booking".
-    - letter_opener opens confirmation email in a browser tab in development OR
+    - letter_opener opens confirmation email in a browser tab in development OR SendGrid
       sends you an actual email in [production](https://raven-reservations.herokuapp.com/)
 
 ### Running the Tests
@@ -55,12 +55,13 @@ Upon booking a flight, users are presented with a confirmation number. On the bo
 ### Testing
 
 - RSpec and Capybara
-- Model, and Feature specs
+- Model and System specs
 - use FactoryBot for fixtures
 
 #### Notable Gems used
 - capybara
 - bullet
+- letter_opener
 - guard
 - shoulda-matchers
 - factory_bot_rails
