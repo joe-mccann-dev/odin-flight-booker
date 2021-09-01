@@ -4,13 +4,21 @@ This project is an exercise in building advanced forms completed as part of [The
 
 Upon booking a flight, users are presented with a confirmation number. On the bookings tab, I implemented a search feature. Users can look up their booking either by confirmation number or email assosciated with the booking.
 
+## Demo
+
+![demo gif of classic 1858 game of Paul Morphy vs Duke Karl](demo/ravenreservations.gif)
+
+
+*A short demonstration of* [The Opera Game](https://www.chess.com/terms/opera-game-chess), *a famous 1858 match between Paul Morphy and Duke Karl.*
+
+***
+
 ### Installation
 
 1. Install Locally.
     - Clone this repo.
     - cd into cloned directory `cd odin-flight-booker`
-    - `bundle install && rails webpacker:install`
-    - Enter `N` when prompted to overwrite any files.
+    - `bundle install && yarn install`
 
 2. Seed the database.
     - `rails db:migrate`
