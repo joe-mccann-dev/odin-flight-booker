@@ -6,10 +6,10 @@ Upon booking a flight, users are presented with a confirmation number. On the bo
 
 ## Demo
 
-![demo gif of classic 1858 game of Paul Morphy vs Duke Karl](demo/ravenreservations.gif)
+![booking a flight and then searching for it](demo/ravenreservations.gif)
 
 
-*A short demonstration of* [The Opera Game](https://www.chess.com/terms/opera-game-chess), *a famous 1858 match between Paul Morphy and Duke Karl.*
+*Booking a flight and then searching for it with confirmation number or passenger email*
 
 ***
 
