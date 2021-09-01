@@ -62,7 +62,7 @@ RSpec.describe "Bookings", type: :system do
         click_on "Complete Booking"
 
         expect(page).to have_current_path(booking_path("#{Booking.last.id}"))
-        expect(page).to have_content("Success! Your Booking is complete.")
+        expect(page).to have_content("Successfully booked")
       end
 
       it "redirects back if passengers use the same email" do
@@ -127,7 +127,7 @@ RSpec.describe "Bookings", type: :system do
         click_on "Complete Booking"
 
         expect(page).to have_current_path(booking_path("#{Booking.last.id}"))
-        expect(page).to have_content("Success! Your Booking is complete.")
+        expect(page).to have_content("Successfully booked")
 
         ####-----------now try to book same flight with an email from above-------------####
 
