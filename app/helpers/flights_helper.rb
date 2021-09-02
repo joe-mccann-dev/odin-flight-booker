@@ -3,7 +3,7 @@
 # Primarily contains formatting helpers for view
 module FlightsHelper
   def long_date_format
-    params[:departure_time].to_date.strftime('%A %B %-dth, %Y')
+    params[:departure_time].to_date.strftime('%A %B %-d, %Y')
   end
 
   def short_time_format(flight)
