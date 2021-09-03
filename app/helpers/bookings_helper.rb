@@ -7,7 +7,7 @@ module BookingsHelper
   end
 
   def bookings_searched_and_found?
-    params[:search] && @bookings.any?
+    params[:search] && @results.any?
   end
 
   def generate_confirmation_number

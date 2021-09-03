@@ -31,8 +31,8 @@ class BookingsController < ApplicationController
     @flight = @booking.flight
   end
 
-  def index
-    @bookings = Booking.search(params[:search])
+  def search
+    @results = Booking.search(params[:search])
   end
 
   private

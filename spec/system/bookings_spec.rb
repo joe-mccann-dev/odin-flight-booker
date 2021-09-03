@@ -193,13 +193,13 @@ RSpec.describe "Bookings", type: :system do
 
     context "a passenger wants to look up their booking by confirmation number" do
       before(:each) do
-        visit "/bookings"
+        visit search_bookings_path
         fill_in "search", with: booking.confirmation_number
         click_on "Search"
       end
 
       it "shows the passenger a link to that specific booking" do
-        expect(page).to have_current_path("/bookings?search=#{booking.confirmation_number}")
+        expect(page).to have_current_path("/bookings/search?search=#{booking.confirmation_number}")
         expect(page).to have_content(booking.confirmation_number)
       end
 
@@ -214,13 +214,13 @@ RSpec.describe "Bookings", type: :system do
 
     context "a passenger wants to look up their bookings by their email address" do
       before(:each) do
-        visit "/bookings"
+        visit search_bookings_path
         fill_in "search", with: passenger.email
         click_on "Search"
       end
 
       it "shows the passenger a link their booking" do
-        expect(page).to have_current_path("/bookings?search=#{passenger.email}")
+        expect(page).to have_current_path("/bookings/search?search=#{passenger.email}")
         expect(page).to have_content(booking.confirmation_number)
       end
     end

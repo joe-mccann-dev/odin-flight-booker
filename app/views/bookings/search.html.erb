@@ -5,7 +5,7 @@
         <div class="column is-full">
           <h1 class="title has-text-light has-text-centered is-capitalized">Search for bookings</h1>
           <div class="has-text-centered">
-            <%= form_tag bookings_path, method: :get do %>
+            <%= form_tag search_bookings_path, method: :get do %>
               <p class="mb-4">
                 <%= label_tag(:search, "Enter Your Confirmation Number or Passenger Email.", class: "subtitle has-text-light") %>
               </p>
@@ -22,11 +22,11 @@
         <% if bookings_searched_and_found? %>
           <div class="box has-background-grey-dark has-text-light column is-half is-offset-one-quarter">
             <p class="is-size-5-desktop has-text-centered">
-              <%= pluralize(@bookings.size, 'booking')%> found.
+              <%= pluralize(@results.size, 'booking')%> found.
             </p>
             <div>
               <ol class="column">
-                <% @bookings.each do |booking| %>
+                <% @results.each do |booking| %>
                   <li class="mx-5 my-3 is-size-4-widescreen is-size-5-desktop">
                     <p class="has-text-centered is-uppercase">
                       <%= link_to booking.confirmation_number, booking_path(booking) %>
