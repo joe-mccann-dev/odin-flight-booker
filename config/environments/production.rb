@@ -3,6 +3,9 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # use https for all requests
+  config.force_ssl = true
+
   # default host for production
   host = 'raven-reservations.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
